@@ -3,9 +3,48 @@ import os
 import shutil
 from pathlib import Path
 
-from customtkinter import *
-app = CTk()
+import tkinter as tk
+from tkinter import messagebox
 
+
+class TKinterApp:
+    def __init__(self, master):
+        self.master = master
+        master.title("Python File Organizer")
+
+        master.geometry("600x300")
+       
+        self.label2 = tk.Label(master, text="Input 2:")
+        self.label2.grid(row=1, column=0)
+
+        self.entry2 = tk.Entry(master)
+        self.entry2.grid(row=1, column=1)
+
+        self.button = tk.Button(master, text="Sort", command=self.sort)
+        self.button.grid(row=2, columnspan=2)
+
+
+
+    
+    def sort(self):
+        pth = self.entry2.get()
+
+        if not os.path.exists(pth):
+                self.show_error_box("path does not exist")
+        try:
+            sortFiles(pth)
+            self.show_message_box
+        except FileExistsError as e:
+            self.show_error_box(e)
+        
+
+        
+    def show_message_box():
+        messagebox.showinfo("Success!", "Files Organized!")
+
+
+    def show_error_box(error):
+        messagebox.showinfo("Error!", f"Error: {error}")
 
 def sortFiles(path):
 
@@ -70,17 +109,12 @@ def sortFiles(path):
                     except Exception as e:
                         print(f"Error: {e}")
 
-    print("Files Organized!")
-    x = input("")
+
 
 def main():
-    app = CTk()
-
-    app.geometry("800x500")
-    app.mainloop()
-
-    title = CTkLabel(master=app, text="Python File Organizer", )
-    title.place(relx=0.5, rely=0.5, anchor="center")
+    root = tk.Tk()
+    app = TKinterApp(root)
+    root.mainloop()
 
 
 if __name__ == "__main__":
