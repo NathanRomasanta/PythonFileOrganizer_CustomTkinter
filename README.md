@@ -1,4 +1,4 @@
-# Python File Organizer Script
+# Python File Organizer with Tkinter
 
 ## Overview:
 
@@ -11,19 +11,20 @@ Simply put the exe file onto any folder that you have and run it. The python scr
 - **Folder Creation:** Creates folders for the different file types.
 - **File Type Accomodation:** Automatically organizes files.
 - **Executable:** Automatically gets the location path, no need to  manually input it every time you run the program.
+- **GUI:** Added a GUI part using Tkinter (still under development)
 
 ## Installation:
 
 1. Clone the repository to your local machine:
 
     ```bash
-    git clone https://github.com/NathanRomasanta/Python_File_Organizer_Exe.git
+    git clone https://github.com/NathanRomasanta/Python_File_Organizer_Tkinter.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd Python_File_Organizer_Exe
+    cd Python_File_Organizer_Tkinter
     ```
 
 
@@ -32,7 +33,7 @@ Simply put the exe file onto any folder that you have and run it. The python scr
 1. Run the script:
 
     ```bash
-    python Python_File_Organizer.py
+    python Python_File_Organizer_Tkinter.py
     ```
 
 
