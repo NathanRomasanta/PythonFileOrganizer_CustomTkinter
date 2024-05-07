@@ -5,43 +5,43 @@ from pathlib import Path
 
 import tkinter as tk
 from tkinter import messagebox
+from customtkinter import *
 
-
-class TKinterApp:
+class CustomTkinterApp():
     def __init__(self, master):
+
         self.master = master
         master.title("Python File Organizer")
 
-        master.geometry("600x300")
-       
-        self.label2 = tk.Label(master, text="Input 2:")
-        self.label2.grid(row=1, column=0)
+        master.geometry("400x250")
 
-        self.entry2 = tk.Entry(master)
-        self.entry2.grid(row=1, column=1)
+        set_default_color_theme("blue")
+        
+        #defining the frames to separate the layout of the GUI
+        self.aFrame = CTkFrame(master=master, width=400, height=250 )
+        self.aFrame.pack(expand=True)
+        
+        self.label = CTkLabel(master=self.aFrame, text="Enter Directory")
+        self.label.pack(padx=10, pady=20)
+        self.entry = CTkEntry(master=self.aFrame, )
+        self.entry.pack(padx=30, pady=10)
+        self.organizeBtn =  CTkButton(master=self.aFrame, text="Organize", command=self.sort,)
+        self.organizeBtn.pack(padx=10, pady=20)
 
-        self.button = tk.Button(master, text="Sort", command=self.sort)
-        self.button.grid(row=2, columnspan=2)
 
-
-
-    
     def sort(self):
-        pth = self.entry2.get()
+        pth = self.entry.get()
 
         if not os.path.exists(pth):
-                self.show_error_box("path does not exist")
+            self.show_error_box("path does not exist")
         try:
             sortFiles(pth)
-            self.show_message_box
+            self.show_message_box()
         except FileExistsError as e:
             self.show_error_box(e)
-        
 
-        
     def show_message_box():
         messagebox.showinfo("Success!", "Files Organized!")
-
 
     def show_error_box(error):
         messagebox.showinfo("Error!", f"Error: {error}")
@@ -112,8 +112,8 @@ def sortFiles(path):
 
 
 def main():
-    root = tk.Tk()
-    app = TKinterApp(root)
+    root = CTk()
+    app = CustomTkinterApp(root)
     root.mainloop()
 
 
